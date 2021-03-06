@@ -59,5 +59,14 @@ namespace CoreTests
             
             Assert.AreEqual(Foo , _paper.Read());
         }
+
+        [Test]
+        public void PaperDisplaysAllText_WhenTextSpaceIsEdited()
+        {
+            _paper.Insert(Foo + Space + Foo);
+            _paper.Edit(4, "B");
+            
+            Assert.AreEqual(Foo + "B" + Foo, _paper.Read());
+        }
     }
 }

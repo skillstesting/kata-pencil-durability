@@ -36,5 +36,11 @@ namespace Core
             for (var i = 0; i < length; i++) spaces = spaces.Insert(i, " ");
             return spaces;
         }
+
+        public void Edit(int startingPosition, string text)
+        {
+            var startingIndex = startingPosition - 1;
+            _text = _text.Remove(startingIndex, text.Length).Insert(startingIndex, text);
+        }
     }
 }

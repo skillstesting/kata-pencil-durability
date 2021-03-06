@@ -12,5 +12,10 @@ namespace Core
         {
             return _text;
         }
+
+        public void Remove(string text)
+        {
+            _text = " ";
+        }
     }
 }

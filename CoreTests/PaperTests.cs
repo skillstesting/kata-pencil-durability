@@ -35,5 +35,14 @@ namespace CoreTests
             
             Assert.AreEqual("foobar", _paper.Read());
         }
+
+        [Test]
+        public void PaperDisplaysTextWithOneSpace_WhenTextWithOneLetterIsRemoved()
+        {
+            _paper.Insert("F");
+            _paper.Remove("F");
+            
+            Assert.AreEqual(" ", _paper.Read());
+        }
     }
 }

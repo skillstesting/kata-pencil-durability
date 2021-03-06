@@ -20,15 +20,20 @@ namespace Core
             var lastTextPosition = _text.LastIndexOf(text, StringComparison.Ordinal);
             if (lastTextPosition >= 0)
             {
-                _text = _text.Remove(lastTextPosition, text.Length)
-                    .Insert(lastTextPosition, GetTextSpaces(text));
+                _text = ReplaceTextWithSpaces(lastTextPosition, text.Length);
             }
         }
 
-        private static string GetTextSpaces(string text)
+        private string ReplaceTextWithSpaces(int startingPosition, int length)
+        {
+            return _text.Remove(startingPosition, length)
+                .Insert(startingPosition, GenerateSpaces(length));
+        }
+
+        private static string GenerateSpaces(int length)
         {
             var spaces = string.Empty;
-            for (var i = 0; i < text.Length; i++) spaces = spaces.Insert(i, " ");
+            for (var i = 0; i < length; i++) spaces = spaces.Insert(i, " ");
             return spaces;
         }
     }

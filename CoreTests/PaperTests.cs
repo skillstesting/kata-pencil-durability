@@ -5,36 +5,35 @@ namespace CoreTests
 {
     public class PaperTests
     {
+        private Paper _paper;
+        
+        [SetUp]
+        public void SetUp()
+        {
+            _paper = new Paper();
+        }
+        
         [Test]
         public void PaperDisplaysText_WhenTextIsInserted()
         {
-            var paper = new Paper();
-            paper.Insert("foo");
-
-            var paperText = paper.Read();
+            _paper.Insert("foo");
             
-            Assert.AreEqual("foo", paperText);
+            Assert.AreEqual("foo", _paper.Read());
         }
 
         [Test]
         public void PaperDisplaysEmptyText_ByDefault()
         {
-            var paper = new Paper();
-            var paperText = paper.Read();
-            
-            Assert.AreEqual("", paperText);
+            Assert.AreEqual("", _paper.Read());
         }
 
         [Test]
         public void PaperDisplaysAllText_WhenTextIsInsertedTwice()
         {
-            var paper = new Paper();
-            paper.Insert("foo");
-            paper.Insert("bar");
-
-            var paperText = paper.Read();
+            _paper.Insert("foo");
+            _paper.Insert("bar");
             
-            Assert.AreEqual("foobar", paperText);
+            Assert.AreEqual("foobar", _paper.Read());
         }
     }
 }

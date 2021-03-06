@@ -44,5 +44,14 @@ namespace CoreTests
             
             Assert.AreEqual(" ", _paper.Read());
         }
+
+        [Test]
+        public void PaperDisplaysTextWithTwoSpaces_WhenTextWithTwoLettersIsRemoved()
+        {
+            _paper.Insert("Fo");
+            _paper.Remove("Fo");
+            
+            Assert.AreEqual("  ", _paper.Read());
+        }
     }
 }

@@ -15,7 +15,9 @@ namespace Core
 
         public void Remove(string text)
         {
-            _text = " ";
+            var spaces = string.Empty;
+            for (var i = 0; i < text.Length; i++) spaces = spaces.Insert(i, " ");
+            _text = spaces;
         }
     }
 }

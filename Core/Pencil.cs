@@ -13,7 +13,10 @@ namespace Core
 
         public void Write(string text)
         {
-            _durability -= text.Length;
+            foreach (var letter in text)
+            {
+                _durability -= char.IsUpper(letter) ? 2 : 1;
+            }
             _paper.Insert(text);
         }
 

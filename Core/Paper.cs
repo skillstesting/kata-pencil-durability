@@ -15,9 +15,14 @@ namespace Core
 
         public void Remove(string text)
         {
+            _text = _text.Replace(text, GetTextSpaces(text));
+        }
+
+        private static string GetTextSpaces(string text)
+        {
             var spaces = string.Empty;
             for (var i = 0; i < text.Length; i++) spaces = spaces.Insert(i, " ");
-            _text = _text.Replace(text, spaces);
+            return spaces;
         }
     }
 }

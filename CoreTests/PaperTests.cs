@@ -5,6 +5,10 @@ namespace CoreTests
 {
     public class PaperTests
     {
+        private const string Foo = "foo";
+        private const string Bar = "bar";
+        private const string FooBar = Foo + Bar;
+        private const string Space = " ";
         private Paper _paper;
         
         [SetUp]
@@ -16,24 +20,24 @@ namespace CoreTests
         [Test]
         public void PaperDisplaysText_WhenTextIsInserted()
         {
-            _paper.Insert("foo");
+            _paper.Insert(Foo);
             
-            Assert.AreEqual("foo", _paper.Read());
+            Assert.AreEqual(Foo, _paper.Read());
         }
 
         [Test]
         public void PaperDisplaysEmptyText_ByDefault()
         {
-            Assert.AreEqual("", _paper.Read());
+            Assert.AreEqual(string.Empty, _paper.Read());
         }
 
         [Test]
         public void PaperDisplaysAllText_WhenTextIsInsertedTwice()
         {
-            _paper.Insert("foo");
-            _paper.Insert("bar");
+            _paper.Insert(Foo);
+            _paper.Insert(Bar);
             
-            Assert.AreEqual("foobar", _paper.Read());
+            Assert.AreEqual(FooBar, _paper.Read());
         }
 
         [Test]
@@ -42,7 +46,7 @@ namespace CoreTests
             _paper.Insert("F");
             _paper.Remove("F");
             
-            Assert.AreEqual(" ", _paper.Read());
+            Assert.AreEqual(Space, _paper.Read());
         }
 
         [Test]
@@ -51,16 +55,16 @@ namespace CoreTests
             _paper.Insert("Fo");
             _paper.Remove("Fo");
             
-            Assert.AreEqual("  ", _paper.Read());
+            Assert.AreEqual(Space + Space, _paper.Read());
         }
 
         [Test]
         public void PaperDisplaysRemainingTextWithSpaces_WhenSomeTextIsRemoved()
         {
-            _paper.Insert("foobar");
-            _paper.Remove("bar");
+            _paper.Insert(FooBar);
+            _paper.Remove(Bar);
             
-            Assert.AreEqual("foo   ", _paper.Read());
+            Assert.AreEqual(Foo + Space + Space + Space, _paper.Read());
         }
     }
 }

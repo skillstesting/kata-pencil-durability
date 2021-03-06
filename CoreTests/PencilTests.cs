@@ -17,10 +17,19 @@ namespace CoreTests
         [Test]
         public void PaperDisplaysText_WhenPencilWritesText()
         {
-            var pencil = new Pencil(_paper);
+            var pencil = new Pencil(_paper, 6);
             pencil.Write(FooBar);
             
             Assert.AreEqual(FooBar, _paper.Read());
+        }
+
+        [Test]
+        public void PencilIsDull_WhenWritingOneLowercaseLetter_AndDurabilityIsOne()
+        {
+            var pencil = new Pencil(_paper, 1);
+            pencil.Write("f");
+            
+            Assert.IsTrue(pencil.IsDull());
         }
     }
 }

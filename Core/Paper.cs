@@ -40,7 +40,12 @@ namespace Core
         public void Edit(int startingPosition, string text)
         {
             var startingIndex = startingPosition - 1;
-            _text = _text.Remove(startingIndex, text.Length).Insert(startingIndex, text);
+            foreach (var letter in text)
+            {
+                _text = _text.Remove(startingIndex, 1)
+                    .Insert(startingIndex, _text[startingIndex] == ' ' ? letter.ToString() : "@");
+                startingIndex++;
+            }
         }
     }
 }

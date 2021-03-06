@@ -33,15 +33,6 @@ namespace CoreTests
         }
 
         [Test]
-        public void PaperDisplaysRemainingTextWithSpaces_WhenSomeTextIsRemoved()
-        {
-            _paper.Insert(FooBar);
-            _paper.Remove(Bar);
-            
-            Assert.AreEqual(Foo + Space + Space + Space, _paper.Read());
-        }
-
-        [Test]
         public void PaperDisplaysFirstInstanceOfTextWithSpaces_WhenTextIsRemoved()
         {
             _paper.Insert(FooBar);
@@ -58,15 +49,6 @@ namespace CoreTests
             _paper.Remove(Bar);
             
             Assert.AreEqual(Foo , _paper.Read());
-        }
-
-        [Test]
-        public void PaperDisplaysAllText_WhenTextSpaceIsEdited()
-        {
-            _paper.Insert(Foo + Space + Foo);
-            _paper.Edit(4, "B");
-            
-            Assert.AreEqual(Foo + "B" + Foo, _paper.Read());
         }
 
         [Test]

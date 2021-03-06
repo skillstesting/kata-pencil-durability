@@ -24,5 +24,17 @@ namespace CoreTests
             
             Assert.AreEqual("", paperText);
         }
+
+        [Test]
+        public void PaperDisplaysAllText_WhenTextIsInsertedTwice()
+        {
+            var paper = new Paper();
+            paper.Insert("foo");
+            paper.Insert("bar");
+
+            var paperText = paper.Read();
+            
+            Assert.AreEqual("foobar", paperText);
+        }
     }
 }

@@ -16,14 +16,6 @@ namespace CoreTests
         {
             _paper = new Paper();
         }
-        
-        [Test]
-        public void PaperDisplaysText_WhenTextIsInserted()
-        {
-            _paper.Insert(Foo);
-            
-            Assert.AreEqual(Foo, _paper.Read());
-        }
 
         [Test]
         public void PaperDisplaysEmptyText_ByDefault()
@@ -38,24 +30,6 @@ namespace CoreTests
             _paper.Insert(Bar);
             
             Assert.AreEqual(FooBar, _paper.Read());
-        }
-
-        [Test]
-        public void PaperDisplaysTextWithOneSpace_WhenTextWithOneLetterIsRemoved()
-        {
-            _paper.Insert("F");
-            _paper.Remove("F");
-            
-            Assert.AreEqual(Space, _paper.Read());
-        }
-
-        [Test]
-        public void PaperDisplaysTextWithTwoSpaces_WhenTextWithTwoLettersIsRemoved()
-        {
-            _paper.Insert("Fo");
-            _paper.Remove("Fo");
-            
-            Assert.AreEqual(Space + Space, _paper.Read());
         }
 
         [Test]

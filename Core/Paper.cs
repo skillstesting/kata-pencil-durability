@@ -17,7 +17,7 @@ namespace Core
         {
             var spaces = string.Empty;
             for (var i = 0; i < text.Length; i++) spaces = spaces.Insert(i, " ");
-            _text = spaces;
+            _text = _text.Replace(text, spaces);
         }
     }
 }

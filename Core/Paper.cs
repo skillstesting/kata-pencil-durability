@@ -42,8 +42,15 @@ namespace Core
             var startingIndex = startingPosition - 1;
             foreach (var letter in text)
             {
-                _text = _text.Remove(startingIndex, 1)
-                    .Insert(startingIndex, _text[startingIndex] == ' ' ? letter.ToString() : "@");
+                if (startingIndex < _text.Length)
+                {
+                    _text = _text.Remove(startingIndex, 1)
+                        .Insert(startingIndex, _text[startingIndex] == ' ' ? letter.ToString() : "@");
+                }
+                else
+                {
+                    _text += letter;
+                }
                 startingIndex++;
             }
         }

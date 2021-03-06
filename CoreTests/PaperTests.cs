@@ -59,5 +59,14 @@ namespace CoreTests
             
             Assert.AreEqual(Foo + "ba@oo", _paper.Read());
         }
+
+        [Test]
+        public void PaperDisplaysAllTextWithPartialEdit_AndAtSymbol_WhenEditTextIsAddedAtEndOfText()
+        {
+            _paper.Insert(Foo + Space + Foo);
+            _paper.Edit(4, FooBar);
+            
+            Assert.AreEqual(Foo + "f@@@ar", _paper.Read());
+        }
     }
 }

@@ -50,5 +50,14 @@ namespace CoreTests
             
             Assert.AreEqual(FooBar + Foo + Space + Space + Space , _paper.Read());
         }
+
+        [Test]
+        public void PaperDisplaysOriginalText_WhenTextBeingRemovedDoesntExist()
+        {
+            _paper.Insert(Foo);
+            _paper.Remove(Bar);
+            
+            Assert.AreEqual(Foo , _paper.Read());
+        }
     }
 }

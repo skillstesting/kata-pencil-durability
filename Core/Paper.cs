@@ -18,8 +18,11 @@ namespace Core
         public void Remove(string text)
         {
             var lastTextPosition = _text.LastIndexOf(text, StringComparison.Ordinal);
-            _text = _text.Remove(lastTextPosition, text.Length)
-                .Insert(lastTextPosition, GetTextSpaces(text));
+            if (lastTextPosition >= 0)
+            {
+                _text = _text.Remove(lastTextPosition, text.Length)
+                    .Insert(lastTextPosition, GetTextSpaces(text));
+            }
         }
 
         private static string GetTextSpaces(string text)

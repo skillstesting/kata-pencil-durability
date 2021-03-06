@@ -40,5 +40,15 @@ namespace CoreTests
             
             Assert.AreEqual(Foo + Space + Space + Space, _paper.Read());
         }
+
+        [Test]
+        public void PaperDisplaysFirstInstanceOfTextWithSpaces_WhenTextIsRemoved()
+        {
+            _paper.Insert(FooBar);
+            _paper.Insert(FooBar);
+            _paper.Remove(Bar);
+            
+            Assert.AreEqual(FooBar + Foo + Space + Space + Space , _paper.Read());
+        }
     }
 }

@@ -1,3 +1,5 @@
+using System;
+
 namespace Core
 {
     public class Paper
@@ -15,7 +17,9 @@ namespace Core
 
         public void Remove(string text)
         {
-            _text = _text.Replace(text, GetTextSpaces(text));
+            var lastTextPosition = _text.LastIndexOf(text, StringComparison.Ordinal);
+            _text = _text.Remove(lastTextPosition, text.Length)
+                .Insert(lastTextPosition, GetTextSpaces(text));
         }
 
         private static string GetTextSpaces(string text)

@@ -15,12 +15,12 @@ namespace Core
         {
             foreach (var letter in text)
             {
+                _paper.Insert(IsDull() ? " " : letter.ToString());
                 _durability -= char.IsUpper(letter) ? 2 : 1;
             }
-            _paper.Insert(text);
         }
 
-        public bool? IsDull()
+        public bool IsDull()
         {
             return _durability == 0;
         }

@@ -40,5 +40,14 @@ namespace CoreTests
             
             Assert.IsTrue(pencil.IsDull());
         }
+
+        [Test]
+        public void PaperDisplaysPartialTextWithASpace_WhenWritingText_AndDurabilityIsLow()
+        {
+            var pencil = new Pencil(_paper, 2);
+            pencil.Write("foo");
+            
+            Assert.AreEqual("fo ", _paper.Read());
+        }
     }
 }

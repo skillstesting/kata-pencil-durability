@@ -2,7 +2,7 @@ namespace Core
 {
     public class Paper
     {
-        private string _text;
+        private string _text = string.Empty;
         public void Insert(string text)
         {
             _text = text;

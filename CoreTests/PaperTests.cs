@@ -15,5 +15,14 @@ namespace CoreTests
             
             Assert.AreEqual("foo", paperText);
         }
+
+        [Test]
+        public void PaperDisplaysEmptyText_ByDefault()
+        {
+            var paper = new Paper();
+            var paperText = paper.Read();
+            
+            Assert.AreEqual("", paperText);
+        }
     }
 }

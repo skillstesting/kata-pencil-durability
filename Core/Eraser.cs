@@ -16,10 +16,11 @@ namespace Core
             if (!IsDull())
             {
                 _paper.Remove(text);
+                _durability = 0;
             }
         }
 
-        private bool IsDull()
+        public bool IsDull()
         {
             return _durability == 0;
         }

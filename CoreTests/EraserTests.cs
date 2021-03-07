@@ -32,5 +32,15 @@ namespace CoreTests
             
             Assert.AreEqual(TestSetup.FooBar, _paper.Read());
         }
+
+        [Test]
+        public void EraserIsDull_WhenErasingOneLetter_AndDurabilityIsOne()
+        {
+            var eraser = new Eraser(_paper);
+            _paper.Insert("f");
+            eraser.Erase("f");
+            
+            Assert.IsTrue(eraser.IsDull());
+        }
     }
 }

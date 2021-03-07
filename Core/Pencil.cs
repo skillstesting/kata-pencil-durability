@@ -7,12 +7,14 @@ namespace Core
     {
         private readonly Paper _paper;
         private readonly int _initialDurability;
+        private readonly int _length;
         private int _durability;
 
-        public Pencil(Paper paper, int durability)
+        public Pencil(Paper paper, int durability, int length = 1)
         {
             _paper = paper;
             _initialDurability = durability;
+            _length = length;
             _durability = durability;
         }
 
@@ -75,7 +77,10 @@ namespace Core
 
         public void Sharpen()
         {
-            _durability = _initialDurability;
+            if (_length > 0)
+            {
+                _durability = _initialDurability;
+            }
         }
     }
 }

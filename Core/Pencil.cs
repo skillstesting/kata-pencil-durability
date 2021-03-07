@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 namespace Core
 {
@@ -18,26 +19,51 @@ namespace Core
             var textLines = text.Split(new[] {Environment.NewLine}, StringSplitOptions.None);
             if (textLines.Length > 1)
             {
-                for (var index = 1; index < textLines.Length; index++)
-                {
-                    _paper.Insert(Environment.NewLine);
-                    foreach (var letter in textLines[index])
-                    {
-                        _paper.Insert(IsDull() ? " " : letter.ToString());
-                        if (letter == ' ') continue;
-                        _durability -= char.IsUpper(letter) ? 2 : 1;
-                    }
-                }
+                WriteTextFromAllLines(textLines);
             }
             else
             {
-                foreach (var letter in text)
-                {
-                    _paper.Insert(IsDull() ? " " : letter.ToString());
-                    if (letter == ' ') continue;
-                    _durability -= char.IsUpper(letter) ? 2 : 1;
-                }
+                WriteAllTextLetters(text);
             }
+        }
+
+        private void WriteTextFromAllLines(IReadOnlyList<string> textLines)
+        {
+            for (var index = 1; index < textLines.Count; index++)
+            {
+                WriteTextToLine(textLines[index]);
+            }
+        }
+
+        private void WriteTextToLine(string text)
+        {
+            _paper.Insert(Environment.NewLine);
+            WriteAllTextLetters(text);
+        }
+
+        private void WriteAllTextLetters(string text)
+        {
+            foreach (var letter in text)
+            {
+                WriteLetter(letter);
+            }
+        }
+
+        private void WriteLetter(char letter)
+        {
+            InsertLetterOnPaper(letter);
+            UpdateDurability(letter);
+        }
+
+        private void InsertLetterOnPaper(char letter)
+        {
+            _paper.Insert(IsDull() ? " " : letter.ToString());
+        }
+
+        private void UpdateDurability(char letter)
+        {
+            if (letter == ' ') return;
+            _durability -= char.IsUpper(letter) ? 2 : 1;
         }
 
         public bool IsDull()

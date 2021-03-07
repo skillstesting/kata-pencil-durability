@@ -5,7 +5,6 @@ namespace CoreTests
 {
     public class PencilTests
     {
-        private const string FooBar = "foobar";
         private Paper _paper;
         
         [SetUp]
@@ -18,9 +17,9 @@ namespace CoreTests
         public void PaperDisplaysText_WhenPencilWritesText()
         {
             var pencil = new Pencil(_paper, 6);
-            pencil.Write(FooBar);
+            pencil.Write(TestSetup.FooBar);
             
-            Assert.AreEqual(FooBar, _paper.Read());
+            Assert.AreEqual(TestSetup.FooBar, _paper.Read());
         }
 
         [Test]
@@ -45,7 +44,7 @@ namespace CoreTests
         public void PaperDisplaysPartialTextWithASpace_WhenWritingText_AndDurabilityIsLow()
         {
             var pencil = new Pencil(_paper, 2);
-            pencil.Write("foo");
+            pencil.Write(TestSetup.Foo);
             
             Assert.AreEqual("fo ", _paper.Read());
         }
@@ -90,16 +89,17 @@ namespace CoreTests
         public void PaperDisplaysTwoNewLines_AndText_WhenWritingTwoNewLines_AndText()
         {
             var pencil = new Pencil(_paper, 6);
-            pencil.Write(System.Environment.NewLine + System.Environment.NewLine + FooBar);
+            pencil.Write(System.Environment.NewLine + System.Environment.NewLine + TestSetup.FooBar);
 
-            Assert.AreEqual(System.Environment.NewLine + System.Environment.NewLine + FooBar, _paper.Read());
+            var expectedText = System.Environment.NewLine + System.Environment.NewLine + TestSetup.FooBar;
+            Assert.AreEqual(expectedText, _paper.Read());
         }
 
         [Test]
         public void PencilIsDull_WhenWritingANewLine_AndText_AndDurabilityIsLow()
         {
             var pencil = new Pencil(_paper, 6);
-            pencil.Write(System.Environment.NewLine + FooBar);
+            pencil.Write(System.Environment.NewLine + TestSetup.FooBar);
 
             Assert.IsTrue(pencil.IsDull());
         }
@@ -117,7 +117,7 @@ namespace CoreTests
         public void PencilIsNotDull_WhenWritingANewLine_AndASpace_AndDurabilityIsOne()
         {
             var pencil = new Pencil(_paper, 1);
-            pencil.Write(System.Environment.NewLine + " ");
+            pencil.Write(System.Environment.NewLine + TestSetup.Space);
             
             Assert.IsFalse(pencil.IsDull());
         }

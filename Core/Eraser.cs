@@ -15,8 +15,9 @@ namespace Core
         {
             if (IsDull()) return;
             _paper.Remove(text);
-            for (var index = 0; index < text.Length; index++)
+            foreach (var letter in text)
             {
+                if (letter == ' ') continue;
                 _durability--;
             }
         }

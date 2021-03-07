@@ -6,11 +6,13 @@ namespace Core
     public class Pencil
     {
         private readonly Paper _paper;
+        private readonly int _initialDurability;
         private int _durability;
 
         public Pencil(Paper paper, int durability)
         {
             _paper = paper;
+            _initialDurability = durability;
             _durability = durability;
         }
 
@@ -69,6 +71,11 @@ namespace Core
         public bool IsDull()
         {
             return _durability == 0;
+        }
+
+        public void Sharpen()
+        {
+            _durability = _initialDurability;
         }
     }
 }

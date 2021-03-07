@@ -21,6 +21,10 @@ namespace Core
                 for (var index = 1; index < textLines.Length; index++)
                 {
                     _paper.Insert(Environment.NewLine);
+                    foreach (var letter in textLines[index])
+                    {
+                        _paper.Insert(IsDull() ? " " : letter.ToString());
+                    }
                 }
             }
             else

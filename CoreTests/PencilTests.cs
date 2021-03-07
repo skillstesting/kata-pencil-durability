@@ -85,5 +85,14 @@ namespace CoreTests
 
             Assert.AreEqual(System.Environment.NewLine + System.Environment.NewLine, _paper.Read());
         }
+
+        [Test]
+        public void PaperDisplaysTwoNewLines_AndText_WhenWritingTwoNewLines_AndText()
+        {
+            var pencil = new Pencil(_paper, 6);
+            pencil.Write(System.Environment.NewLine + System.Environment.NewLine + FooBar);
+
+            Assert.AreEqual(System.Environment.NewLine + System.Environment.NewLine + FooBar, _paper.Read());
+        }
     }
 }

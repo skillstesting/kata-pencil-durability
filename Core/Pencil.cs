@@ -24,7 +24,7 @@ namespace Core
                     foreach (var letter in textLines[index])
                     {
                         _paper.Insert(IsDull() ? " " : letter.ToString());
-                        _durability -= 1;
+                        _durability -= char.IsUpper(letter) ? 2 : 1;
                     }
                 }
             }

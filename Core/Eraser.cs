@@ -13,8 +13,15 @@ namespace Core
 
         public void Erase(string text)
         {
-            if (_durability > 0)
+            if (!IsDull())
+            {
                 _paper.Remove(text);
+            }
+        }
+
+        private bool IsDull()
+        {
+            return _durability == 0;
         }
     }
 }

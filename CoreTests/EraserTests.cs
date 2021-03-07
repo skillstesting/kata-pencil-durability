@@ -52,5 +52,15 @@ namespace CoreTests
             
             Assert.IsFalse(eraser.IsDull());
         }
+
+        [Test]
+        public void EraserIsDull_WhenErasingTwoLetters_AndDurabilityIsTwo()
+        {
+            var eraser = new Eraser(_paper, 2);
+            _paper.Insert("fo");
+            eraser.Erase("fo");
+            
+            Assert.IsTrue(eraser.IsDull());
+        }
     }
 }

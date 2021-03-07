@@ -13,9 +13,10 @@ namespace Core
 
         public void Erase(string text)
         {
-            if (!IsDull())
+            if (IsDull()) return;
+            _paper.Remove(text);
+            for (var index = 0; index < text.Length; index++)
             {
-                _paper.Remove(text);
                 _durability--;
             }
         }

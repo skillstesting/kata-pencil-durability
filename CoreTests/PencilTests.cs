@@ -161,5 +161,15 @@ namespace CoreTests
             
             Assert.IsTrue(pencil.IsDull());
         }
+
+        [Test]
+        public void PaperDisplaysEditedText_WhenPencilEditsText()
+        {
+            var pencil = new Pencil(_paper, 6);
+            _paper.Insert(TestSetup.Foo + TestSetup.Space + TestSetup.Space + TestSetup.Space);
+            pencil.Edit(4, TestSetup.Bar);
+            
+            Assert.AreEqual(TestSetup.FooBar, _paper.Read());
+        }
     }
 }

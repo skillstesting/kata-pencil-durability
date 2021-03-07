@@ -81,5 +81,10 @@ namespace Core
             _durability = _initialDurability;
             _length--;
         }
+
+        public void Edit(int startingPosition, string text)
+        {
+            _paper.Edit(startingPosition, text);
+        }
     }
 }

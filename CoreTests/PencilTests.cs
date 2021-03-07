@@ -49,5 +49,14 @@ namespace CoreTests
             
             Assert.AreEqual("fo ", _paper.Read());
         }
+
+        [Test]
+        public void PencilIsNotDull_WhenWritingASpace_AndDurabilityIsOne()
+        {
+            var pencil = new Pencil(_paper, 1);
+            pencil.Write(" ");
+            
+            Assert.IsFalse(pencil.IsDull());
+        }
     }
 }

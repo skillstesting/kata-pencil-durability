@@ -165,7 +165,7 @@ namespace CoreTests
         [Test]
         public void PaperDisplaysEditedText_WhenPencilEditsText()
         {
-            var pencil = new Pencil(_paper, 6);
+            var pencil = new Pencil(_paper, 3);
             _paper.Insert(TestSetup.Foo + TestSetup.Space + TestSetup.Space + TestSetup.Space);
             pencil.Edit(4, TestSetup.Bar);
             

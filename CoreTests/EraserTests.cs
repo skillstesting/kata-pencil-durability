@@ -16,7 +16,7 @@ namespace CoreTests
         [Test]
         public void PaperDisplaysUpdatedText_WhenEraserErasesText()
         {
-            var eraser = new Eraser(_paper);
+            var eraser = new Eraser(_paper, 3);
             _paper.Insert(TestSetup.FooBar);
             eraser.Erase(TestSetup.Bar);
             
@@ -71,6 +71,16 @@ namespace CoreTests
             eraser.Erase(TestSetup.Space);
             
             Assert.IsFalse(eraser.IsDull());
+        }
+
+        [Test]
+        public void PaperDisplaysPartiallyErasedText_WhenErasingTwoLetters_AndDurabilityIsOne()
+        {
+            var eraser = new Eraser(_paper);
+            _paper.Insert(TestSetup.Foo);
+            eraser.Erase("oo");
+            
+            Assert.AreEqual("fo ", _paper.Read());
         }
     }
 }

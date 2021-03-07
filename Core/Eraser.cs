@@ -14,7 +14,13 @@ namespace Core
         public void Erase(string text)
         {
             if (IsDull()) return;
+
+            if (_durability < text.Length)
+            {
+                text = text.Remove(1, 1);
+            }
             _paper.Remove(text);
+
             foreach (var letter in text)
             {
                 if (letter == ' ') continue;

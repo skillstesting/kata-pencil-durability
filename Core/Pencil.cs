@@ -1,3 +1,5 @@
+using System;
+
 namespace Core
 {
     public class Pencil
@@ -13,11 +15,19 @@ namespace Core
 
         public void Write(string text)
         {
-            foreach (var letter in text)
+            var textLines = text.Split(new[] {Environment.NewLine}, StringSplitOptions.None);
+            if (textLines.Length > 1)
             {
-                _paper.Insert(IsDull() ? " " : letter.ToString());
-                if (letter == ' ') continue;
-                _durability -= char.IsUpper(letter) ? 2 : 1;
+                _paper.Insert(Environment.NewLine);
+            }
+            else
+            {
+                foreach (var letter in text)
+                {
+                    _paper.Insert(IsDull() ? " " : letter.ToString());
+                    if (letter == ' ') continue;
+                    _durability -= char.IsUpper(letter) ? 2 : 1;
+                }
             }
         }
 

@@ -67,5 +67,14 @@ namespace CoreTests
             
             Assert.AreEqual(System.Environment.NewLine, _paper.Read());
         }
+
+        [Test]
+        public void PencilIsNotDull_WhenWritingNewLine_AndDurabilityIsOne()
+        {
+            var pencil = new Pencil(_paper, 1);
+            pencil.Write(System.Environment.NewLine);
+
+            Assert.IsFalse(pencil.IsDull());
+        }
     }
 }

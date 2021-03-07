@@ -77,11 +77,9 @@ namespace Core
 
         public void Sharpen()
         {
-            if (_length > 0)
-            {
-                _durability = _initialDurability;
-                _length--;
-            }
+            if (_length == 0) return;
+            _durability = _initialDurability;
+            _length--;
         }
     }
 }

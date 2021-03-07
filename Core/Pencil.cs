@@ -66,7 +66,7 @@ namespace Core
 
         private void UpdateDurability(char letter)
         {
-            if (letter == ' ') return;
+            if (letter == ' ' || IsDull()) return;
             _durability -= char.IsUpper(letter) ? 2 : 1;
         }
 

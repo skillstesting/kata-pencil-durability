@@ -152,5 +152,14 @@ namespace CoreTests
             
             Assert.IsTrue(pencil.IsDull());
         }
+
+        [Test]
+        public void PencilIsDull_WhenWritingTwoLetters_AndDurabilityIsOne()
+        {
+            var pencil = new Pencil(_paper, 1);
+            pencil.Write("fo");
+            
+            Assert.IsTrue(pencil.IsDull());
+        }
     }
 }

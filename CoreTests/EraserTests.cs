@@ -82,5 +82,15 @@ namespace CoreTests
             
             Assert.AreEqual("fo ", _paper.Read());
         }
+
+        [Test]
+        public void PaperDisplaysPartiallyErasedText_WhenErasingThreeLetters_AndDurabilityIsTwo()
+        {
+            var eraser = new Eraser(_paper, 2);
+            _paper.Insert(TestSetup.Foo);
+            eraser.Erase("foo");
+            
+            Assert.AreEqual("f  ", _paper.Read());
+        }
     }
 }

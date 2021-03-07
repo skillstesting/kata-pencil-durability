@@ -1,3 +1,5 @@
+using System.Linq;
+
 namespace Core
 {
     public class Eraser
@@ -17,7 +19,7 @@ namespace Core
 
             if (_durability < text.Length)
             {
-                text = text.Remove(1, 1);
+                text = text.Substring(text.Length - _durability, _durability);
             }
             _paper.Remove(text);
 

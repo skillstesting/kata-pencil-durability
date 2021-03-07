@@ -18,7 +18,10 @@ namespace Core
             var textLines = text.Split(new[] {Environment.NewLine}, StringSplitOptions.None);
             if (textLines.Length > 1)
             {
-                _paper.Insert(Environment.NewLine);
+                for (var index = 1; index < textLines.Length; index++)
+                {
+                    _paper.Insert(Environment.NewLine);
+                }
             }
             else
             {

@@ -16,7 +16,7 @@ namespace Core
             if (!IsDull())
             {
                 _paper.Remove(text);
-                _durability = 0;
+                _durability--;
             }
         }
 

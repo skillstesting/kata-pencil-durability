@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 
 namespace Core
@@ -17,17 +18,13 @@ namespace Core
         {
             if (IsDull()) return;
 
-            if (_durability < text.Length)
+            var textCountWithoutSpaces = text.Count(c => !char.IsWhiteSpace(c));
+            if (_durability < textCountWithoutSpaces)
             {
                 text = text.Substring(text.Length - _durability, _durability);
             }
             _paper.Remove(text);
-
-            foreach (var letter in text)
-            {
-                if (letter == ' ') continue;
-                _durability--;
-            }
+            _durability -= textCountWithoutSpaces;
         }
 
         public bool IsDull()

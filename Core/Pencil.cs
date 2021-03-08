@@ -9,10 +9,12 @@ namespace Core
         private readonly int _initialDurability;
         private int _length;
         private int _durability;
+        private readonly Eraser _eraser;
 
-        public Pencil(Paper paper, int durability, int length = 1)
+        public Pencil(Paper paper, int durability, int length = 1, int eraserDurability = 1)
         {
             _paper = paper;
+            _eraser = new Eraser(paper, eraserDurability);
             _initialDurability = durability;
             _length = length;
             _durability = durability;
@@ -85,6 +87,11 @@ namespace Core
         public void Edit(int startingPosition, string text)
         {
             _paper.Edit(startingPosition, text);
+        }
+
+        public void Erase(string text)
+        {
+            _eraser.Erase(text);
         }
     }
 }

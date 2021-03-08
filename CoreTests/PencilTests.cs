@@ -171,5 +171,15 @@ namespace CoreTests
             
             Assert.AreEqual(TestSetup.FooBar, _paper.Read());
         }
+
+        [Test]
+        public void PaperDisplaysUpdatedText_WhenPencilErasesText()
+        {
+            var pencil = new Pencil(_paper, 1, 0, 3);
+            _paper.Insert(TestSetup.FooBar);
+            pencil.Erase(TestSetup.Bar);
+            
+            Assert.AreEqual(TestSetup.Foo + TestSetup.Space + TestSetup.Space + TestSetup.Space, _paper.Read());
+        }
     }
 }

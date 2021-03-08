@@ -53,7 +53,7 @@ namespace CoreTests
         public void PaperDisplaysAllTextWithPartialEdit_AndAtSymbol_WhenEditTextIsLongerThanAvailableSpace()
         {
             _paper.Insert(TestSetup.Foo + TestSetup.Space + TestSetup.Space + TestSetup.Foo);
-            _paper.Edit(4, TestSetup.Bar);
+            _paper.Insert(TestSetup.Bar, 4);
             
             Assert.AreEqual(TestSetup.Foo + "ba@oo", _paper.Read());
         }
@@ -62,7 +62,7 @@ namespace CoreTests
         public void PaperDisplaysAllTextWithPartialEdit_AndAtSymbol_WhenEditTextIsAddedAtEndOfText()
         {
             _paper.Insert(TestSetup.Foo + TestSetup.Space + TestSetup.Foo);
-            _paper.Edit(4, TestSetup.FooBar);
+            _paper.Insert(TestSetup.FooBar, 4);
             
             Assert.AreEqual(TestSetup.Foo + "f@@@ar", _paper.Read());
         }

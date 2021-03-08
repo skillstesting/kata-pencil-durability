@@ -5,9 +5,15 @@ namespace Core
     public class Paper
     {
         private string _text = string.Empty;
-        public void Insert(string text)
+
+        public void Insert(string text, int? startingPosition = null)
         {
-            _text += text;
+            var startingIndex = startingPosition - 1 ?? _text.Length + 1;
+            foreach (var letter in text)
+            {
+                AddLetterToText(letter, startingIndex);
+                startingIndex++;
+            }
         }
 
         public string Read()
@@ -37,17 +43,7 @@ namespace Core
             return spaces;
         }
 
-        public void Edit(int startingPosition, string text)
-        {
-            var startingIndex = startingPosition - 1;
-            foreach (var letter in text)
-            {
-                AddLetterToText(startingIndex, letter);
-                startingIndex++;
-            }
-        }
-
-        private void AddLetterToText(int startingIndex, char letter)
+        private void AddLetterToText(char letter, int startingIndex)
         {
             if (startingIndex < _text.Length)
             {

@@ -167,7 +167,7 @@ namespace CoreTests
         {
             var pencil = new Pencil(_paper, 3);
             _paper.Insert(TestSetup.Foo + TestSetup.Space + TestSetup.Space + TestSetup.Space);
-            pencil.Edit(4, TestSetup.Bar);
+            pencil.Write(TestSetup.Bar, 4);
             
             Assert.AreEqual(TestSetup.FooBar, _paper.Read());
         }
@@ -180,6 +180,16 @@ namespace CoreTests
             pencil.Erase(TestSetup.Bar);
             
             Assert.AreEqual(TestSetup.Foo + TestSetup.Space + TestSetup.Space + TestSetup.Space, _paper.Read());
+        }
+
+        [Test]
+        public void PaperDisplaysPartiallyEditedText_WhenEditingText_AndDurabilityIsLow()
+        {
+            var pencil = new Pencil(_paper, 1);
+            _paper.Insert(TestSetup.Foo + TestSetup.Space + TestSetup.Space + TestSetup.Space);
+            pencil.Write(TestSetup.Bar, 4);
+            
+            Assert.AreEqual("foob  ", _paper.Read());
         }
     }
 }

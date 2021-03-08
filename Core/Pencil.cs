@@ -10,6 +10,7 @@ namespace Core
         private int _length;
         private int _durability;
         private readonly Eraser _eraser;
+        private int? _startingPosition;
 
         public Pencil(Paper paper, int durability, int length = 1, int eraserDurability = 1)
         {
@@ -20,8 +21,9 @@ namespace Core
             _durability = durability;
         }
 
-        public void Write(string text)
+        public void Write(string text, int? startingPosition = null)
         {
+            _startingPosition = startingPosition;
             var textLines = text.Split(new[] {Environment.NewLine}, StringSplitOptions.None);
             if (textLines.Length > 1)
             {
@@ -52,7 +54,14 @@ namespace Core
             foreach (var letter in text)
             {
                 WriteLetter(letter);
+                IncreaseStartingPosition();
             }
+        }
+
+        private void IncreaseStartingPosition()
+        {
+            if (_startingPosition == null) return;
+            _startingPosition++;
         }
 
         private void WriteLetter(char letter)
@@ -63,7 +72,7 @@ namespace Core
 
         private void InsertLetterOnPaper(char letter)
         {
-            _paper.Insert(IsDull() ? " " : letter.ToString());
+            _paper.Insert(IsDull() ? " " : letter.ToString(), _startingPosition);
         }
 
         private void UpdateDurability(char letter)
@@ -82,11 +91,6 @@ namespace Core
             if (_length == 0) return;
             _durability = _initialDurability;
             _length--;
-        }
-
-        public void Edit(int startingPosition, string text)
-        {
-            _paper.Edit(startingPosition, text);
         }
 
         public void Erase(string text)
